@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BJJ OKINAWA 入会フォーム</title>
+  <title>BJJ IMPACTO OKINAWA 入会フォーム</title>
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
@@ -28,12 +28,12 @@
       font-weight: bold;
       display: block;
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 16px;
     }
     input, select, textarea {
       width: 100%;
-      padding: 14px;
-      margin-top: 8px;
+      padding: 12px;
+      margin-top: 6px;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
@@ -41,22 +41,43 @@
     }
     button {
       margin-top: 30px;
-      padding: 16px;
+      padding: 14px;
       background-color: #1976d2;
       color: #fff;
       border: none;
       border-radius: 6px;
-      font-size: 18px;
+      font-size: 16px;
       width: 100%;
       cursor: pointer;
     }
     button:hover {
       background-color: #1565c0;
     }
+    .scroll-box {
+      height: 250px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-top: 20px;
+      background: #f9f9f9;
+      border-radius: 6px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    canvas {
+      width: 600px;
+      height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 10px;
+      touch-action: none;
+    }
+    .signature-controls {
+      margin-top: 10px;
+    }
     .qr-section-title {
       font-weight: bold;
       margin-top: 40px;
-      margin-bottom: 10px;
       font-size: 18px;
       color: #444;
     }
@@ -69,35 +90,12 @@
     }
     .qr-images div {
       text-align: center;
-      font-size: 16px;
-    }
-    .scroll-box {
-      height: 250px;
-      overflow-y: scroll;
-      border: 1px solid #ccc;
-      padding: 18px;
-      margin-top: 20px;
-      background: #f9f9f9;
-      border-radius: 6px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    canvas {
-      width: 100%;
-      height: 300px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 10px;
-      touch-action: none;
-    }
-    .signature-controls {
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>BJJ IMPACTO OKINAWA</h1>
+    <h1>BJJ IMPACTO OKINAWA 入会フォーム</h1>
     <form action="https://formsubmit.co/bjjokiflavio@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
       <label>お名前 / Full Name</label>
       <input type="text" name="お名前" required>
@@ -145,56 +143,47 @@
         • 清潔・健康を保ち、仲間に敬意を持って練習に臨んでください。<br>
         • 爪は短く、長髪は結んでください。<br>
         • 道着の下にラッシュガードを着用してください。<br><br>
-        • Maintain good hygiene and health, and train with respect for others.<br>
-        • Nails must be trimmed, and long hair must be tied.<br>
-        • A rash guard must be worn under the gi.</p>
+        • Maintain hygiene and respect. Trim nails. Tie long hair. Wear rash guard under gi.</p>
 
         <hr>
-
         <p><strong>【お支払い｜Payments】</strong><br>
         • 入会時に自動引き落とし手続きを完了してください。<br>
-        • 月謝は2ヶ月目以降、自動的に引き落とされます。<br><br>
-        • Please complete the automatic payment setup upon enrollment.<br>
-        • From the second month onward, membership fees will be automatically charged each month.</p>
+        • 月謝は2ヶ月目以降自動引き落としされます。<br><br>
+        • Complete auto-payment setup upon enrollment. Monthly fee auto-charged from month 2.</p>
 
         <hr>
-
         <p><strong>【返金｜Refunds】</strong><br>
         • ご入金後の返金は、いかなる理由でもお受けできません。<br><br>
-        • No refunds will be accepted under any circumstances after payment has been made.</p>
+        • No refunds will be issued for any reason after payment.</p>
 
         <hr>
-
-        <p><strong>【免責｜Waiver of Liability】</strong><br>
-        • 練習中の事故・怪我・病気に対して、当クラブは一切の責任を負いません。<br><br>
-        • The club is not responsible for any accidents, injuries, or illnesses that occur during practice.</p>
+        <p><strong>【免責｜Waiver】</strong><br>
+        • 練習中の事故・怪我・病気に対し、当クラブは責任を負いません。<br><br>
+        • The club assumes no responsibility for injuries, accidents, or illness during training.</p>
 
         <hr>
-
-        <p><strong>【休会・退会｜Leave / Withdrawal】</strong><br>
+        <p><strong>【休会・退会｜Leave/Withdrawal】</strong><br>
         • 所定の手続きを提出してください。<br>
-        • 書類受領後、2日後に効力を持ちます。<br><br>
-        • Please submit the required form to request a leave or withdrawal.<br>
-        • The process will be effective two days after the club receives the form.</p>
+        • クラブが受領して2日後に適用されます。<br><br>
+        • Submit the required form. Takes effect 2 days after receipt by the club.</p>
 
         <hr>
-
         <p><strong>【同意｜Agreement】</strong><br>
         私は上記の規約をすべて読み、理解し、同意します。<br>
-        I have read, understood, and agree to all the terms and conditions above.</p>
+        I have read, understood, and agree to all the above terms.</p>
       </div>
 
       <label>
         <input type="checkbox" name="利用規約同意" required>
-        上記の規約に同意します / I agree to the terms and conditions
+        上記の規約に同意します / I agree to the above terms
       </label>
 
       <label>手書き署名 / Handwritten Signature</label>
-      <canvas id="signatureCanvas"></canvas>
+      <canvas id="signatureCanvas" width="600" height="300"></canvas>
       <div class="signature-controls">
         <button type="button" onclick="clearCanvas()">署名をクリア</button>
       </div>
-      <input type="hidden" name="署名画像データ" id="signatureData">
+      <input type="hidden" name="署名画像データ" id="signatureData" />
 
       <div class="qr-section-title">お支払い / Payment</div>
       <div class="qr-images">
@@ -218,34 +207,16 @@
     const canvas = document.getElementById("signatureCanvas");
     const ctx = canvas.getContext("2d");
     let drawing = false;
-    let rect = canvas.getBoundingClientRect();
-
-    function getPosition(e) {
-      if (e.touches && e.touches[0]) {
-        return {
-          x: e.touches[0].clientX - rect.left,
-          y: e.touches[0].clientY - rect.top
-        };
-      } else {
-        return {
-          x: e.offsetX,
-          y: e.offsetY
-        };
-      }
-    }
 
     canvas.addEventListener("mousedown", e => {
-      rect = canvas.getBoundingClientRect();
       drawing = true;
-      const pos = getPosition(e);
       ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
+      ctx.moveTo(e.offsetX, e.offsetY);
     });
 
     canvas.addEventListener("mousemove", e => {
       if (drawing) {
-        const pos = getPosition(e);
-        ctx.lineTo(pos.x, pos.y);
+        ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
       }
     });
@@ -255,18 +226,19 @@
 
     canvas.addEventListener("touchstart", e => {
       e.preventDefault();
-      rect = canvas.getBoundingClientRect();
       drawing = true;
-      const pos = getPosition(e);
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
       ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
+      ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
     });
 
     canvas.addEventListener("touchmove", e => {
       e.preventDefault();
       if (drawing) {
-        const pos = getPosition(e);
-        ctx.lineTo(pos.x, pos.y);
+        const touch = e.touches[0];
+        const rect = canvas.getBoundingClientRect();
+        ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
         ctx.stroke();
       }
     });
