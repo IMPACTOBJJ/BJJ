@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BJJ OKINAWA 入会フォーム</title>
   <style>
     body {
@@ -53,6 +53,24 @@
     button:hover {
       background-color: #1565c0;
     }
+    .qr-section-title {
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #444;
+    }
+    .qr-images {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .qr-images div {
+      text-align: center;
+      font-size: 16px;
+    }
     .scroll-box {
       height: 250px;
       overflow-y: scroll;
@@ -72,22 +90,8 @@
       margin-top: 10px;
       touch-action: none;
     }
-    .qr-images {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .qr-images div {
-      text-align: center;
-      font-size: 16px;
-    }
-    @media screen and (max-width: 600px) {
-      .qr-images {
-        flex-direction: column;
-      }
+    .signature-controls {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -107,79 +111,102 @@
       <label>電話番号 / Phone Number</label>
       <input type="tel" name="電話番号" required>
 
-      <label>顔写真のアップロード / Upload Face Photo</label>
+      <label>顔写真のアップロード / Upload a recent face photo</label>
       <input type="file" name="顔写真" accept="image/*" required>
 
-      <label>柔術経験はありますか？ / BJJ Experience</label>
+      <label>柔術経験はありますか？ / Do you have BJJ experience?</label>
       <select name="柔術経験" required>
         <option value="なし">なし / No</option>
         <option value="あり">あり / Yes</option>
       </select>
 
-      <label>帯の色（経験者のみ） / Belt Color</label>
+      <label>経験がある方は帯の色 / Your belt color if experienced</label>
       <select name="帯の色">
         <option value="">選択してください</option>
-        <option value="白帯">白帯 / White</option>
-        <option value="青帯">青帯 / Blue</option>
-        <option value="紫帯">紫帯 / Purple</option>
-        <option value="茶帯">茶帯 / Brown</option>
-        <option value="黒帯">黒帯 / Black</option>
+        <option value="白帯">白帯</option>
+        <option value="青帯">青帯</option>
+        <option value="紫帯">紫帯</option>
+        <option value="茶帯">茶帯</option>
+        <option value="黒帯">黒帯</option>
       </select>
 
-      <label>持病・既往歴 / Medical Conditions</label>
+      <label>持病や既往歴 / Medical conditions</label>
       <textarea name="持病・既往歴" rows="3"></textarea>
 
-      <label>緊急連絡先 / Emergency Contact</label>
+      <label>緊急連絡先（氏名・電話番号） / Emergency Contact</label>
       <input type="text" name="緊急連絡先" required>
 
       <label>契約日 / Date of Agreement</label>
       <input type="date" name="契約日" required>
 
-      <label>規約内容 / Terms & Conditions</label>
+      <label>規約内容 / Terms</label>
       <div class="scroll-box">
-        <strong>【敬意と衛生｜Respect & Hygiene】</strong><br>
+        <p><strong>【敬意と衛生｜Respect & Hygiene】</strong><br>
         • 清潔・健康を保ち、仲間に敬意を持って練習に臨んでください。<br>
         • 爪は短く、長髪は結んでください。<br>
-        • 道着の下にラッシュガードを着用してください。<br>
-        • Maintain hygiene and respect. Trim nails. Tie long hair. Wear rash guard under gi.<br><br>
+        • 道着の下にラッシュガードを着用してください。<br><br>
+        • Maintain good hygiene and health, and train with respect for others.<br>
+        • Nails must be trimmed, and long hair must be tied.<br>
+        • A rash guard must be worn under the gi.</p>
 
-        <strong>【お支払い｜Payments】</strong><br>
+        <hr>
+
+        <p><strong>【お支払い｜Payments】</strong><br>
         • 入会時に自動引き落とし手続きを完了してください。<br>
-        • 月謝は2ヶ月目以降自動引き落としされます。<br>
-        • Set up auto-payment at enrollment. Monthly fees auto-charged from 2nd month.<br><br>
+        • 月謝は2ヶ月目以降、自動的に引き落とされます。<br><br>
+        • Please complete the automatic payment setup upon enrollment.<br>
+        • From the second month onward, membership fees will be automatically charged each month.</p>
 
-        <strong>【返金｜Refunds】</strong><br>
-        • ご入金後の返金は、いかなる理由でもお受けできません。<br>
-        • No refunds for any reason after payment.<br><br>
+        <hr>
 
-        <strong>【免責｜Waiver】</strong><br>
-        • 練習中の事故・怪我・病気に対し、当クラブは責任を負いません。<br>
-        • The club is not liable for accidents, injuries, or illness during practice.<br><br>
+        <p><strong>【返金｜Refunds】</strong><br>
+        • ご入金後の返金は、いかなる理由でもお受けできません。<br><br>
+        • No refunds will be accepted under any circumstances after payment has been made.</p>
 
-        <strong>【休会・退会｜Leave/Withdrawal】</strong><br>
+        <hr>
+
+        <p><strong>【免責｜Waiver of Liability】</strong><br>
+        • 練習中の事故・怪我・病気に対して、当クラブは一切の責任を負いません。<br><br>
+        • The club is not responsible for any accidents, injuries, or illnesses that occur during practice.</p>
+
+        <hr>
+
+        <p><strong>【休会・退会｜Leave / Withdrawal】</strong><br>
         • 所定の手続きを提出してください。<br>
-        • クラブが受領して2日後に適用されます。<br>
-        • Submit the required form. Applies 2 days after club receipt.
+        • 書類受領後、2日後に効力を持ちます。<br><br>
+        • Please submit the required form to request a leave or withdrawal.<br>
+        • The process will be effective two days after the club receives the form.</p>
+
+        <hr>
+
+        <p><strong>【同意｜Agreement】</strong><br>
+        私は上記の規約をすべて読み、理解し、同意します。<br>
+        I have read, understood, and agree to all the terms and conditions above.</p>
       </div>
 
       <label>
-        <input type="checkbox" name="規約同意" required>
-        上記の規約に同意します / I agree to the terms above
+        <input type="checkbox" name="利用規約同意" required>
+        上記の規約に同意します / I agree to the terms and conditions
       </label>
 
-      <label>手書きサイン / Signature</label>
+      <label>手書き署名 / Handwritten Signature</label>
       <canvas id="signatureCanvas"></canvas>
-      <input type="hidden" name="署名画像" id="signatureData">
-      <button type="button" onclick="clearCanvas()">署名をクリア</button>
+      <div class="signature-controls">
+        <button type="button" onclick="clearCanvas()">署名をクリア</button>
+      </div>
+      <input type="hidden" name="署名画像データ" id="signatureData">
 
+      <div class="qr-section-title">お支払い / Payment</div>
       <div class="qr-images">
         <div>
-          <img src="kids_class_qr.png" alt="Kids QR" width="180">
-          <p>キッズクラス<br><a href="https://your-kids-payment-link.com" target="_blank">リンクはこちら</a></p>
+          <img src="kids_class_qr.png" alt="キッズクラス QRコード" width="180" />
+          <p>キッズクラス / Kids Class</p>
+          <a href="https://your-kids-payment-link.com" target="_blank">https://your-kids-payment-link.com</a>
         </div>
         <div>
-          <img src="adult_class_qr.png" alt="Adult QR" width="180">
-          <p>アダルトクラス<br><a href="https://your-adult-payment-link.com" target="_blank">リンクはこちら</a></p>
+          <img src="adult_class_qr.png" alt="アダルトクラス QRコード" width="180" />
+          <p>アダルトクラス / Adult Class</p>
+          <a href="https://your-adult-payment-link.com" target="_blank">https://your-adult-payment-link.com</a>
         </div>
       </div>
 
@@ -191,10 +218,10 @@
     const canvas = document.getElementById("signatureCanvas");
     const ctx = canvas.getContext("2d");
     let drawing = false;
+    let rect = canvas.getBoundingClientRect();
 
     function getPosition(e) {
-      const rect = canvas.getBoundingClientRect();
-      if (e.touches) {
+      if (e.touches && e.touches[0]) {
         return {
           x: e.touches[0].clientX - rect.left,
           y: e.touches[0].clientY - rect.top
@@ -208,6 +235,7 @@
     }
 
     canvas.addEventListener("mousedown", e => {
+      rect = canvas.getBoundingClientRect();
       drawing = true;
       const pos = getPosition(e);
       ctx.beginPath();
@@ -215,16 +243,19 @@
     });
 
     canvas.addEventListener("mousemove", e => {
-      if (!drawing) return;
-      const pos = getPosition(e);
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
+      if (drawing) {
+        const pos = getPosition(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
     });
 
     canvas.addEventListener("mouseup", () => drawing = false);
-    canvas.addEventListener("mouseleave", () => drawing = false);
+    canvas.addEventListener("mouseout", () => drawing = false);
 
     canvas.addEventListener("touchstart", e => {
+      e.preventDefault();
+      rect = canvas.getBoundingClientRect();
       drawing = true;
       const pos = getPosition(e);
       ctx.beginPath();
@@ -232,10 +263,12 @@
     });
 
     canvas.addEventListener("touchmove", e => {
-      if (!drawing) return;
-      const pos = getPosition(e);
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
+      e.preventDefault();
+      if (drawing) {
+        const pos = getPosition(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
     });
 
     canvas.addEventListener("touchend", () => drawing = false);
