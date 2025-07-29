@@ -64,6 +64,18 @@
       font-size: 16px;
       line-height: 1.7;
     }
+    canvas {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 10px;
+      touch-action: none;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+    }
+    .signature-controls {
+      margin-top: 10px;
+    }
     .qr-section-title {
       font-weight: bold;
       margin-top: 40px;
@@ -71,25 +83,35 @@
       font-size: 18px;
       color: #444;
     }
-    .qr-images {
+    .qr-container {
       display: flex;
-      justify-content: space-around;
-      align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
     }
-    .qr-images div {
-      text-align: center;
-      font-size: 16px;
-    }
-    canvas {
+    .qr-box {
+      width: 260px;
       border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 10px;
-      touch-action: none;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background: #fff;
     }
-    .signature-controls {
-      margin-top: 10px;
+    .qr-box h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .qr-box a {
+      display: inline-block;
+      font-size: 18px;
+      line-height: 48px;
+      height: 48px;
+      min-width: 212px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
     }
   </style>
 </head>
@@ -97,7 +119,6 @@
   <div class="container">
     <h1>BJJ IMPACTO OKINAWA</h1>
     <form action="https://formsubmit.co/bjjokiflavio@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
-
       <label>お名前 / Full Name</label>
       <input type="text" name="お名前" required>
 
@@ -146,23 +167,20 @@
         • 道着の下にラッシュガードを着用してください。<br><br>
         • Maintain hygiene and respect. Trim nails. Tie long hair. Wear rash guard under gi.</p>
 
-        <hr>
         <p><strong>【お支払い｜Payments】</strong><br>
         • 入会時に自動引き落とし手続きを完了してください。<br>
-        • 月謝は2ヶ月目以降自動引き落としされます。</p>
+        • 月謝は2ヶ月目以降自動引き落としされます。<br><br>
         • Complete the auto-payment setup at the time of enrollment.<br>
         • From the second month onward, the monthly fee will be auto-deducted.</p>
-        <hr>
+
         <p><strong>【返金｜Refunds】</strong><br>
         • ご入金後の返金は、いかなる理由でもお受けできません。<br><br>
         • No refunds will be issued under any circumstances.</p>
 
-        <hr>
         <p><strong>【免責｜Waiver】</strong><br>
         • 練習中の事故・怪我・病気に対し、当クラブは責任を負いません。<br><br>
         • The Club is not responsible for any accidents, injuries, or illnesses during training.</p>
 
-        <hr>
         <p><strong>【休会・退会｜Leave/Withdrawal】</strong><br>
         • 所定の手続きを提出してください。<br>
         • クラブが受領して2日後に適用されます。<br><br>
@@ -176,20 +194,27 @@
       </label>
 
       <label>手書き署名 / Handwritten Signature</label><br>
-      <canvas id="signatureCanvas" width="600" height="300"></canvas>
+      <canvas id="signatureCanvas"></canvas>
       <div class="signature-controls">
         <button type="button" onclick="clearCanvas()">署名をクリア</button>
       </div>
       <input type="hidden" name="署名画像データ" id="signatureData">
 
       <div class="qr-section-title">お支払い / Payment</div>
-      <div class="qr-images">
-        <div class="qr-images">
-       <div class="qr-images">
-      <div class="qr-images">
-<div class="qr-images">
-  
-</div>
+      <div class="qr-container">
+        <div class="qr-box">
+          <h3>プレミアム / Premium</h3>
+          <a href="https://square.link/u/4bmNXThD?src=embed" style="background-color: #00b23b; color: #000;" target="_blank">今すぐ支払う</a>
+        </div>
+        <div class="qr-box">
+          <h3>アダルト / Adult</h3>
+          <a href="https://square.link/u/AsrF1lXo?src=embed" style="background-color: #006aff; color: #fff;" target="_blank">今すぐ支払う</a>
+        </div>
+        <div class="qr-box">
+          <h3>キッズ / Kids</h3>
+          <a href="https://square.link/u/w89AO0qa?src=embed" style="background-color: #ffbf00; color: #000;" target="_blank">今すぐ支払う</a>
+        </div>
+      </div>
 
       <button type="submit">送信 / Submit</button>
     </form>
@@ -200,44 +225,45 @@
     const ctx = canvas.getContext("2d");
     let drawing = false;
 
-    // PC操作
-    canvas.addEventListener("mousedown", e => {
-      drawing = true;
-      ctx.beginPath();
-      ctx.moveTo(e.offsetX, e.offsetY);
-    });
-
-    canvas.addEventListener("mousemove", e => {
-      if (drawing) {
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-      }
-    });
-
-    canvas.addEventListener("mouseup", () => drawing = false);
-    canvas.addEventListener("mouseleave", () => drawing = false);
-
-    // スマホ操作
-    canvas.addEventListener("touchstart", e => {
-      e.preventDefault();
-      drawing = true;
-      const touch = e.touches[0];
+    function getCanvasPos(e) {
       const rect = canvas.getBoundingClientRect();
+      const x = e.clientX || (e.touches && e.touches[0].clientX);
+      const y = e.clientY || (e.touches && e.touches[0].clientY);
+      return {
+        x: x - rect.left,
+        y: y - rect.top
+      };
+    }
+
+    function startDrawing(e) {
+      drawing = true;
+      const pos = getCanvasPos(e);
       ctx.beginPath();
-      ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
-    });
+      ctx.moveTo(pos.x, pos.y);
+    }
 
+    function draw(e) {
+      if (!drawing) return;
+      const pos = getCanvasPos(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      drawing = false;
+    }
+
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseleave", stopDrawing);
+    canvas.addEventListener("touchstart", e => {
+      e.preventDefault(); startDrawing(e);
+    });
     canvas.addEventListener("touchmove", e => {
-      e.preventDefault();
-      if (drawing) {
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
-        ctx.stroke();
-      }
+      e.preventDefault(); draw(e);
     });
-
-    canvas.addEventListener("touchend", () => drawing = false);
+    canvas.addEventListener("touchend", stopDrawing);
 
     function clearCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
