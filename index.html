@@ -112,6 +112,7 @@
       text-decoration: none;
       border-radius: 6px;
       box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+      padding: 0 20px;
     }
   </style>
 </head>
@@ -161,6 +162,7 @@
 
       <label>規約内容 / Terms</label>
       <div class="scroll-box">
+        <!-- 規約内容を保持 -->
         <p><strong>【敬意と衛生｜Respect & Hygiene】</strong><br>
         • 清潔・健康を保ち、仲間に敬意を持って練習に臨んでください。<br>
         • 爪は短く、長髪は結んでください。<br>
@@ -203,16 +205,16 @@
       <div class="qr-section-title">お支払い / Payment</div>
       <div class="qr-container">
         <div class="qr-box">
-          <h3>プレミアム / Premium</h3>
-          <a href="https://square.link/u/4bmNXThD?src=embed" style="background-color: #00b23b; color: #000;" target="_blank">今すぐ支払う</a>
+          <h3>チェック / Check</h3>
+          <a href="https://square.link/u/4bmNXThD?src=embed" style="background-color: #00b23b; color: #000;">今すぐ支払う</a>
         </div>
         <div class="qr-box">
           <h3>アダルト / Adult</h3>
-          <a href="https://square.link/u/AsrF1lXo?src=embed" style="background-color: #006aff; color: #fff;" target="_blank">今すぐ支払う</a>
+          <a href="https://square.link/u/AsrF1lXo?src=embed" style="background-color: #006aff; color: #fff;">今すぐ支払う</a>
         </div>
         <div class="qr-box">
           <h3>キッズ / Kids</h3>
-          <a href="https://square.link/u/w89AO0qa?src=embed" style="background-color: #ffbf00; color: #000;" target="_blank">今すぐ支払う</a>
+          <a href="https://square.link/u/w89AO0qa?src=embed" style="background-color: #ffbf00; color: #000;">今すぐ支払う</a>
         </div>
       </div>
 
@@ -257,12 +259,8 @@
     canvas.addEventListener("mousemove", draw);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mouseleave", stopDrawing);
-    canvas.addEventListener("touchstart", e => {
-      e.preventDefault(); startDrawing(e);
-    });
-    canvas.addEventListener("touchmove", e => {
-      e.preventDefault(); draw(e);
-    });
+    canvas.addEventListener("touchstart", e => { e.preventDefault(); startDrawing(e); });
+    canvas.addEventListener("touchmove", e => { e.preventDefault(); draw(e); });
     canvas.addEventListener("touchend", stopDrawing);
 
     function clearCanvas() {
